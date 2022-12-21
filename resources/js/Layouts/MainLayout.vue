@@ -1,8 +1,9 @@
 <template>
     <Link href="/">Main Page</Link>&nbsp;
-    <Link href="/hello">Show Page</Link>
-    <slot>Default</slot>
+    <Link href="/hello">Show Page</Link>&nbsp;
+    <Link href="/listing">Listings</Link>
     <div>The page time: {{timer}}</div>
+    <slot>Default</slot>
 </template>
 
 <script setup>

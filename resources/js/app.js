@@ -1,7 +1,17 @@
 import './bootstrap';
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
+import { InertiaProgress } from '@inertiajs/progress'
 import MainLayout from './Layouts/MainLayout.vue'
+import { ZiggyVue } from 'ziggy'
+import '../css/app.css'
+
+InertiaProgress.init({
+    delay: 0,
+    color: '#29d',
+    includeCSS: true,
+    showSpinner: true,
+})
 
 createInertiaApp({
     resolve: async (name) => {
@@ -15,6 +25,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(ZiggyVue)
             .mount(el)
     },
 })

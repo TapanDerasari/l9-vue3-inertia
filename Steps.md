@@ -8,3 +8,6 @@ steps following videos
 
 ->npm install @inertiajs/inertia @inertiajs/inertia-vue3
 
+->composer require tightenco/ziggy
+
+->@npm install inertiajs/progress

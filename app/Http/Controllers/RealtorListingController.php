@@ -25,12 +25,18 @@ class RealtorListingController extends Controller
         return inertia('Realtor/Index', [
             'filters' => $filters,
             'listings' => Auth::user()->listings()
+                ->mostRecent()
                 ->withCount('images')
+                ->withCount('offers')
                 ->filter($filters)
                 ->paginate(10)->withQueryString()
         ]);
     }
 
+    public function show(Listing $listing)
+    {
+        return inertia('Realtor/Show', ['listing' => $listing->load('offers.bidder')]);
+    }
     /**
      * Show the form for creating a new resource.
      *

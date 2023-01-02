@@ -35,6 +35,14 @@ class Listing extends Model
     }
 
     /**
+     * @return HasMany
+     */
+    public function offers(): HasMany
+    {
+        return $this->hasMany(Offer::class, 'listing_id');
+    }
+
+    /**
      * @param  Builder  $query
      * @return Builder
      */
@@ -71,4 +79,19 @@ class Listing extends Model
                 : $query->orderBy($value, $filters['order'] ?? 'desc')
         );
     }
+
+    /**
+     * @param  Builder  $query
+     * @return Builder
+     */
+    public function scopeWithoutSold(Builder $query): Builder
+    {
+//        return $query->doesntHave('offers')
+//            ->orWhereHas('offers',
+//                fn (Builder $query) => $query->whereNull('accepted_at')
+//                    ->whereNull('rejected_at')
+//            );
+        return $query->whereNull('sold_at');
+    }
+
 }

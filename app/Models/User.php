@@ -53,7 +53,18 @@ class User extends Authenticatable
         );
     }
 
+    /**
+     * @return HasMany
+     */
     public function listings(): HasMany{
-        return $this->hasMany(\App\Models\Listing::class, 'by_user_id');
+        return $this->hasMany(Listing::class, 'by_user_id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function offers(): HasMany
+    {
+        return $this->hasMany(Offer::class, 'bidder_id');
     }
 }

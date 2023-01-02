@@ -23,6 +23,7 @@ class ListingController extends Controller
         ]);
         $listings= Listing::mostRecent()
             ->filter($filters)
+            ->withoutSold()
             ->paginate(10)
             ->withQueryString();
         return inertia('Listing/Index',['filters'=>$filters,'listings'=>$listings]);
@@ -41,6 +42,12 @@ class ListingController extends Controller
 //        }
         //$this->authorize('view',$listing);
         $listing->load(['images']);
-        return inertia('Listing/Show',['listing'=>$listing]);
+        $offer = Auth::check()
+            ? $listing->offers()->byMe()->first()
+            : null;
+        return inertia('Listing/Show',[
+            'listing'=>$listing,
+            'offerMade'=>$offer
+        ]);
     }
 }

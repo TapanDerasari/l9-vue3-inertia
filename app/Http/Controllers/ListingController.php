@@ -14,13 +14,13 @@ class ListingController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
      * @return \Inertia\Response|\Inertia\ResponseFactory
      */
     public function index()
     {
-        return inertia('Listing/Index',['listings'=>Listing::all()]);
+        $listings= Listing::orderByDesc('created_at')
+                     ->paginate(10);
+        return inertia('Listing/Index',['listings'=>$listings]);
     }
 
     /**
@@ -35,9 +35,7 @@ class ListingController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -92,7 +90,6 @@ class ListingController extends Controller
      */
     public function update(Request $request, Listing $listing)
     {
-        //
         $listing->update(
             $request->validate([
                 'beds' => 'required|integer|min:0|max:20',

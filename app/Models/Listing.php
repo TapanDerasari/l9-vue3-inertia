@@ -14,6 +14,9 @@ class Listing extends Model
         'beds', 'baths', 'area', 'city', 'code', 'street', 'street_nr', 'price'
     ];
 
+    /**
+     * @return BelongsTo
+     */
     public function owner(): BelongsTo{
         return $this->belongsTo(\App\Models\User::class, 'by_user_id');
     }

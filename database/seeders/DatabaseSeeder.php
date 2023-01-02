@@ -17,8 +17,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'is_admin' => true,
         ]);
-        \App\Models\Listing::factory(20)->create([
+        \App\Models\Listing::factory(30)->create([
             'by_user_id' => 1
         ]);
     }

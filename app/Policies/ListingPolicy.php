@@ -11,6 +11,18 @@ class ListingPolicy
     use HandlesAuthorization;
 
     /**
+     * @param  User|null  $user
+     * @param $ability
+     * @return bool
+     */
+    public function before(?User $user, $ability)
+    {
+        if (auth()->check() && $user->is_admin /*&& $ability === 'update'*/) {
+            return true;
+        }
+    }
+
+    /**
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user

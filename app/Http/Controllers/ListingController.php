@@ -16,11 +16,16 @@ class ListingController extends Controller
     /**
      * @return \Inertia\Response|\Inertia\ResponseFactory
      */
-    public function index()
+    public function index(Request $request)
     {
-        $listings= Listing::orderByDesc('created_at')
-                     ->paginate(10);
-        return inertia('Listing/Index',['listings'=>$listings]);
+        $filters=$request->only([
+            'priceFrom', 'priceTo', 'beds', 'baths', 'areaFrom', 'areaTo'
+        ]);
+        $listings= Listing::mostRecent()
+            ->filter($filters)
+            ->paginate(10)
+            ->withQueryString();
+        return inertia('Listing/Index',['filters'=>$filters,'listings'=>$listings]);
     }
 
     /**

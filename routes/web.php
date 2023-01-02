@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\RealtorListingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,15 @@ Route::get('/',[\App\Http\Controllers\IndexController::class,'index']);
 Route::get('/hello',[\App\Http\Controllers\IndexController::class,'show'])->middleware('auth');
 
 Route::resource('listing', ListingController::class)
-    ->only(['create', 'store', 'edit', 'update', 'destroy'])
-    ->middleware('auth');
-Route::resource('listing', ListingController::class)
-    ->except(['create', 'store', 'edit', 'update', 'destroy']);
+    ->only(['index', 'show']);
+Route::prefix('realtor')
+    ->name('realtor.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::put('listing/{listing}/restore', [RealtorListingController::class, 'restore'])
+            ->name('listing.restore')
+            ->withTrashed();
+        Route::resource('listing', RealtorListingController::class)->except(['show']);
+    });
 
 include('auth.php');

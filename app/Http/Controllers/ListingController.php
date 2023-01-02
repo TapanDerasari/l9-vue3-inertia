@@ -40,6 +40,7 @@ class ListingController extends Controller
 //            abort(403);
 //        }
         //$this->authorize('view',$listing);
+        $listing->load(['images']);
         return inertia('Listing/Show',['listing'=>$listing]);
     }
 }

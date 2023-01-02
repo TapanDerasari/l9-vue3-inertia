@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\RealtorListingController;
+use App\Http\Controllers\RealtorListingImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,9 @@ Route::prefix('realtor')
             ->name('listing.restore')
             ->withTrashed();
         Route::resource('listing', RealtorListingController::class)->except(['show']);
+
+        Route::resource('listing.image', RealtorListingImageController::class)
+            ->only(['create', 'store','destroy']);
     });
 
 include('auth.php');

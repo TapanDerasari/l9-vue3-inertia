@@ -29,4 +29,10 @@
     .btn-outline {
         @apply p-2 rounded-md border shadow-sm border-gray-300 dark:border-gray-800 hover:border-gray-400 hover:bg-gray-50 dark:hover:border-gray-700 dark:hover:bg-gray-800
     }
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .dropdown-li{
+        @apply hover:bg-gray-400 bg-gray-200 py-2 px-4 block
+    }
 }

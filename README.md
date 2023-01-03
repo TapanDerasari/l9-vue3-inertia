@@ -1,10 +1,10 @@
-#Property fair demo
+# Property fair demo
 
 Note: This project is only for the educational purpose.
 
 In this project I have used laravel 9, vue 3 and inertia Js for the fullstack development.
 
-###Installation
+### Installation
 
 1. Clone the repository to your local machine.
 2. `cd project`

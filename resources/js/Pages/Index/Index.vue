@@ -1,7 +1,6 @@
 <template>
-    <div>Index</div>
-    <div>
-        The message is {{ message }}
+    <div class="flex items-center">
+        Hello, Welcome to the this demo project.
     </div>
 </template>
 

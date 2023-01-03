@@ -6,6 +6,8 @@ In this project I have used laravel 9, vue 3 and inertia Js for the fullstack de
 
 ### Installation
 
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/9.x/deployment#server-requirements)
+
 1. Clone the repository to your local machine.
 2. `cd project`
 3. Install all the dependencies using composer `composer install`

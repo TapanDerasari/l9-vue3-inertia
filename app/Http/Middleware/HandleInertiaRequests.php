@@ -40,10 +40,11 @@ class HandleInertiaRequests extends Middleware
             'user' => function () use ($request) {
                 return $request->user()
                     ? [
-                    'id' => $request->user()->id,
-                    'name' => $request->user()->name,
-                    'email' => $request->user()->email]
-                    : null;
+                        'id' => $request->user()->id,
+                        'name' => $request->user()->name,
+                        'email' => $request->user()->email,
+                        'notificationCount' => $request->user()->unreadNotifications()->count()
+                    ] : null;
             },
             'flash' => function () use ($request) {
                 return [

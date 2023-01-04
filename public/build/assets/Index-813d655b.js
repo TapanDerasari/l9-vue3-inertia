@@ -1,1 +1,0 @@
-import{o as e,c as t}from"./app-8170b1b3.js";const o={class:"flex items-center"},a={__name:"Index",props:{message:String},setup(s){return(c,r)=>(e(),t("div",o," Hello, Welcome to the this demo project. "))}};export{a as default};

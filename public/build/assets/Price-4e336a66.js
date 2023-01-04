@@ -1,1 +1,0 @@
-import{l as c,o as n,c as o,t as s,b as a}from"./app-8170b1b3.js";const u={__name:"Price",props:{price:[Number,String]},setup(r){const e=r,t=c(()=>Number(e.price).toLocaleString("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}));return(i,p)=>(n(),o("span",null,s(a(t)),1))}};export{u as _};

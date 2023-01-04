@@ -6,16 +6,10 @@
         </button>
         <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 rounded w-full">
             <li class="dropdown-li">
-                <Link :href="route('realtor.listing.index')">My Profile
-                </Link>
+                <Link :href="route('realtor.listing.index')">My Listings</Link>
             </li>
             <li class="dropdown-li">
-                <Link :href="route('realtor.listing.index')">My Listings
-                </Link>
-            </li>
-            <li class="dropdown-li">
-                <Link :href="route('logout')" method="delete" as="button">Logout
-                </Link>
+                <Link :href="route('logout')" method="delete" as="button">Logout</Link>
             </li>
         </ul>
     </div>

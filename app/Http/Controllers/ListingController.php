@@ -24,7 +24,7 @@ class ListingController extends Controller
         $listings= Listing::mostRecent()
             ->filter($filters)
             ->withoutSold()
-            ->paginate(10)
+            ->paginate(9)
             ->withQueryString();
         return inertia('Listing/Index',['filters'=>$filters,'listings'=>$listings]);
     }

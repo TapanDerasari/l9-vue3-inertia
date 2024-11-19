@@ -2,7 +2,7 @@
 
 Note: This project is only for the educational purpose.
 
-In this project I have used laravel 10, vue 3 and inertia Js for the fullstack development.
+In this project I have used laravel 11.x, vue 3.x and inertia Js for the fullstack development.
 
 ### Features
 

@@ -116,13 +116,14 @@ const filterForm = useForm({
 })
 
 const filter = () => {
-    filterForm.get(
-        route('listing.index'),
-        {
-            preserveState: true,
-            preserveScroll: true,
-        },
-    )
+    filterForm.transform(data =>
+        Object.fromEntries(
+            Object.entries(data).filter(([, v]) => v !== null && v !== '')
+        )
+    ).get(route('listing.index'), {
+        preserveState: true,
+        preserveScroll: true,
+    })
 }
 
 const clear = () => {

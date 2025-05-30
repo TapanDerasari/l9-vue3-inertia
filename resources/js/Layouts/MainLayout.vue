@@ -93,7 +93,7 @@
 
 <script setup>
 import ProfileDropdown from '@/Components/ProfileDropdown.vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { Link, usePage } from '@inertiajs/inertia-vue3'
 
 const page = usePage()
@@ -103,21 +103,35 @@ const notificationCount = computed(() => user.value ? Math.min(user.value.notifi
 
 // Add smooth scroll behavior for anchor links
 const handleSmoothScroll = (e) => {
-    if (e.target.hash && document.querySelector(e.target.hash)) {
-        e.preventDefault()
-        document.querySelector(e.target.hash).scrollIntoView({
-            behavior: 'smooth'
-        })
+    // Find the anchor element in the composed path
+    const anchor = e.composedPath().find(el => 
+        el.tagName?.toLowerCase() === 'a' && 
+        el.getAttribute('href')?.startsWith('#')
+    )
+    
+    if (anchor) {
+        const targetId = anchor.getAttribute('href')
+        const targetElement = document.querySelector(targetId)
+        
+        if (targetElement) {
+            e.preventDefault()
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            })
+            // Update URL without adding to history
+            history.replaceState(null, '', targetId)
+        }
     }
 }
 
 onMounted(() => {
     // Add smooth scroll behavior for all anchor links
     document.addEventListener('click', handleSmoothScroll, { passive: true })
-    
-    return () => {
-        document.removeEventListener('click', handleSmoothScroll)
-    }
+})
+
+onUnmounted(() => {
+    // Clean up the event listener when component is unmounted
+    document.removeEventListener('click', handleSmoothScroll)
 })
 </script>
 

@@ -2,7 +2,7 @@
 
 Note: This project is only for the educational purpose.
 
-In this project I have used laravel 11.x, vue 3.x and inertia Js for the fullstack development.
+In this project I have used laravel 12.x, vue 3.x and inertia Js for the fullstack development.
 
 ### Features
 
@@ -16,7 +16,7 @@ In this project I have used laravel 11.x, vue 3.x and inertia Js for the fullsta
 
 ### Installation
 
-Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/10.x/deployment#server-requirements)
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/12.x)
 
 1. Clone the repository to your local machine.
 2. `cd project`
